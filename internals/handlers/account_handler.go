@@ -52,7 +52,7 @@ func (h *AccountHandler) Login(c *gin.Context) {
 	account, err := h.service.Login(body.Username, body.Password)
 
 	if err != nil {
-		error := http_error.NewBadRequestError(err.Error())
+		error := http_error.NewUnauthorizedError(err.Error())
 		c.IndentedJSON(error.Status(), error)
 		return
 	}
